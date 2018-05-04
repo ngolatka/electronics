@@ -21,8 +21,8 @@ will be roughly 60mA, which is in the safe region of 1/3 C for a typical 1900mAh
 The resistors R1, R2, and R3 are rated at 1/4 watt. To spread the dissipation, several
 resistors are used in parallel instead of a single one.
 
-R4 and the LED will only light if current actually flows through the cell. A bad connection to
-the cell can thus easily be identified. However, R4 and the LED are not strictly required for
+The LED will only light if current actually flows through the cell. A bad connection to the
+cell can thus easily be identified. However, R4 and the LED are not strictly required for
 operating the circuit.
 
 The charging output is short-circuit proof by design, which protects the power source (e.g. a
