@@ -1,9 +1,9 @@
 # usb-nimh-charger
 
 ## Description
-An extremely simple charging circuit for a NiMH cell, powered by 5V from a USB port.
+An extremely simple charging circuit for a single NiMH cell, powered by 5V from a USB port.
 
-Because NiMH cells can be trickle charged at around 1/3 C indefinitely, this circuit does
+Because a NiMH cell can be trickle charged at around 1/3 C indefinitely, this circuit does
 not utilize any sophisticated way to detect the state of charge. It will simply trickle
 charge the cell continuously.
 
@@ -19,9 +19,15 @@ charge the cell continuously.
 * R4 390R
 * D1 1N4001
 * LED (general purpose indicator)
-* Connector / holder for cell
+* Connector / holder for single cell
 
 Resistors are rated 1/4W. Tolerances are not critical.
+
+## Note
+To charge more than one cell, the circuit must be built several times, once per cell. The
+diode D1 will prevent any undesired current flow between the cells.
+
+It is not advisable to simply connect several cells in parallel.
 
 ## Operation
 The component values have been choosen to charge a NiMH cell with 60-90mA. During charging,
