@@ -2,7 +2,7 @@
 Schematics and technical descriptions of various electronic circuits,
 mostly on hobbyist / DIY level.
 
-Unless otherwise noted, circuits are designed by @ngolatka.
+Unless otherwise noted, circuits are designed by [ngolatka](https://github.com/ngolatka).
 
 # Disclaimer
 Use everything at your own risk, especially mains powered / high voltage
