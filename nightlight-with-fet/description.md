@@ -13,6 +13,17 @@ count significantly.
 * Quiescent current: less than 5µA
 * Operating current: 5-10mA
 
+## Components
+* R1 330k
+* R2 220R
+* R3 LDR (general purpose)
+* R4 1M
+* Q1 2N7000
+* LED 5mm 16000mcd
+* 3 AA cells (alkaline or NiMH)
+
+Resistors are rated 1/4W. Tolerances are not critical.
+
 ## Note
 If only two NiMH cells are used (resulting in nominally 2,4V), R1 should be decreased to
 100k. Otherwise the gate voltage of Q1 might not rise high enough to turn Q1 on. Lowering

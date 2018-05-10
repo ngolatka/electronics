@@ -14,6 +14,15 @@ charge the cell continuously.
 * Expected cell capacity: 1900mAh
 * Charging time: 36h for a completely flat cell
 
+## Components
+* R1, R2, R3 120R
+* R4 390R
+* D1 1N4001
+* LED (general purpose indicator)
+* Connector / holder for cell
+
+Resistors are rated 1/4W. Tolerances are not critical.
+
 ## Operation
 The component values have been choosen to charge a NiMH cell with 60-90mA. During charging,
 the cell voltage will increase, which will reduce the current.
