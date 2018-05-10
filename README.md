@@ -1,5 +1,5 @@
 # What's this about
-This is a collection of Schematics and technical descriptions of various
+This is a collection of schematics and technical descriptions of various
 electronic circuits, mostly on hobbyist / DIY level.
 
 Unless otherwise noted, circuits are designed by [ngolatka](https://github.com/ngolatka).
