@@ -40,12 +40,12 @@ The diode D1 will prevent any current flow between the cells.
 It is not advisable to simply use a single circuit and connect several cells in parallel
 
 ## Operation
-The diode drops ~0,75 V, and the resistors drop between 2,75-3,4 V, depending on the
+The diode D1 drops ~0,75 V, and the resistors R1-R3 drop between 2,75-3,4 V, depending on the
 cell voltage. With a supply voltage of 5 V, this leaves a maximum charging voltage of 1,5 V.
 
 At 1,5 V cell voltage, the charge current will be ~60 mA, which is in the safe region of 1/30 C
 for a 1900 mAh cell. The charging process could continue indefinitely, but it is recommended
-to terminate charging after 36-48 hours.
+to terminate charging after 36-48 hours (or later, if the cell capacity is higher).
 
 The LED will only light if current actually flows through the cell. A bad connection to the
 cell can thus easily be identified. However, R4 and the LED are not strictly required for
