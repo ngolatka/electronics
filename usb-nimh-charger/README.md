@@ -55,5 +55,5 @@ The charging output is short-circuit proof by design, which protects the power s
 computer's USB port) if a cell is defective.
 
 ## Acknowledgements
-This circuit is partly based on the recommendation of [Big Clive](http://bigclive.com/) in
+This circuit is based on the recommendation of [Big Clive](http://bigclive.com/) in
 [this particular video]( https://www.youtube.com/watch?v=Lv23jMMPuiY).
