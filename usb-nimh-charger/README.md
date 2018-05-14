@@ -9,6 +9,10 @@ can be charged safely, but the charging time needs to be extended accordingly. A
 lower capacity can also be charged, but care must be taken to not overcharge the cell, because
 the charge current might not be in the safe region of 1/30 C (see notes below).
 
+## Schematic
+
+![schematic](./schematic.png)
+
 ## Specifications
 * Supply voltage: 5 V DC (stable)
 * Minimal charging current: ~60 mA
