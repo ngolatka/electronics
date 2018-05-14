@@ -8,6 +8,10 @@ Power consumption is minimal. Batteries will typically last for several months.
 This variant uses a single FET instead of bipolar transistors, which reduces the component
 count significantly.
 
+## Schematic
+
+![schematic](./schematic.png)
+
 ## Specifications
 * Recommended supply voltage: 3,5-4,5 V (three AA alkaline or NiMH cells)
 * Quiescent current: less than 5 µA
