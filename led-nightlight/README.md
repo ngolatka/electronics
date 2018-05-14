@@ -6,6 +6,10 @@ A simple, battery powered LED nightlight which automatically turns on when it's 
 Power consumption is minimal. Batteries will typically last for several months. Using
 rechargeable NiMH cells is recommended.
 
+## Schematic
+
+![schematic](./schematic.png)
+
 ## Specifications
 * Supply voltage: 2,4-3 V (two AA alkaline or NiMH cells)
 * Quiescent current: typically 40 µA
