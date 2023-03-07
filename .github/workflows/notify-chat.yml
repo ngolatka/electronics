@@ -12,3 +12,8 @@ jobs:
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_WEBHOOK: ${{ secrets.WEBHOOK_URL }}
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_USERNAME: Github (rtBot)
+        SLACK_TITLE: Message
+        MSG_MINIMAL: Commit
+        SLACK_FOOTER: ""
