@@ -4,6 +4,9 @@ on:
     types:
       - opened
 
+env:
+  json_body: '{ "displayName": "Github",  "format": "html", "text": "New issue by $GITHUB_ACTOR<br>$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" }'
+
 jobs:
   send_msg:
    runs-on: ubuntu-latest
@@ -15,6 +18,6 @@ jobs:
         method: "POST"
         accept: 200,201
         headers: '{ "Content-Type": "application/json" }'
-        body: '{ "displayName": "Github",  "format": "html", "text": ":info: New issue by $GITHUB_ACTOR<br>$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" }'
+        body: ${{ env.json_body }}
         timeout: 1000
         retries: 2
