@@ -15,5 +15,6 @@ jobs:
         SLACK_COLOR: ${{ job.status }}
         SLACK_USERNAME: Github (rtBot)
         SLACK_TITLE: Message
-        MSG_MINIMAL: Commit
+        SLACK_MESSAGE: "New issue created by $GITHUB_ACTOR"
+        MSG_MINIMAL: true
         SLACK_FOOTER: ""
