@@ -8,13 +8,13 @@ jobs:
   send_msg:
    runs-on: ubuntu-latest
    steps:
-    - name: Chat notification
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.WEBHOOK_URL }}
-        SLACK_COLOR: ${{ job.status }}
-        SLACK_USERNAME: Github (rtBot)
-        SLACK_TITLE: Message
-        SLACK_MESSAGE: New issue created by $GITHUB_ACTOR
-        MSG_MINIMAL: true
-        SLACK_FOOTER: ""
+    - name: "Call API"
+      uses: indiesdev/curl@v1.1
+      with:
+        url: https://reqres.in/api/users
+        method: "POST"
+        accept: 200
+        headers: '{ "Content-Type": "application/json" }'
+        body: '{ "displayName": "Github",  "format": "html", "text": ":info: New issue by $GITHUB_ACTOR<br>$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" }'
+        timeout: 1000
+        retries: 2
