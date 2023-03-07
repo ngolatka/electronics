@@ -18,6 +18,6 @@ jobs:
         method: "POST"
         accept: 200,201
         headers: '{ "Content-Type": "application/json" }'
-        body: '{ "displayName": "Github",  "format": "html", "text": "New issue by ${{ env.github_actor }} ${{ GITHUB_REF }}" }'
+        body: '{ "displayName": "Github",  "format": "html", "text": "New issue by ${{ env.github_actor }} ${{ github.ref }}" }'
         timeout: 1000
         retries: 2
