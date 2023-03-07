@@ -16,6 +16,6 @@ jobs:
         method: "POST"
         accept: 200,201
         headers: '{ "Content-Type": "application/json" }'
-        body: '{ "displayName": "Github",  "format": "html", "text": "Issue ${{ github.event.issue.number }} opened in ${{ github.repository }} by ${{ github.actor }}.<br>See ${{ github.server_url }}/${{ github.repository }}/issues?q=involves%3A${{ github.actor }}+is%3Aopen" }'
+        body: '{ "displayName": "Github", "format": "html", "text": "Issue opened in ${{ github.repository }} by ${{ github.actor }}.<br>${{ github.server_url }}/${{ github.repository }}/issues/${{ github.event.issue.number }}" }'
         timeout: 1000
         retries: 2
