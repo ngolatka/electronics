@@ -8,11 +8,7 @@ jobs:
   send_msg:
    runs-on: ubuntu-latest
    steps:
-     - name: send message
-       uses: olabiniV2/matrix-message@v0.0.1
-       with:
-         room_id: ${{ secrets.ELEMENT_ROOM_ID }}
-         access_token: ${{ secrets.ELEMENT_ACCESS_TOKEN }}
-         subject: "Github"
-         message: "Job executed on $GITHUB_SERVER_URL/$GITHUB_REPOSITORY"
-         server: "riot.netresearch.de"
+    - name: curl
+      uses: wei/curl@v1
+      with:
+        args: -X POST -H "Content-Type: application/json" --data "{ \"displayName\":\"Github\", \"format\":\"html\", \"text\":\"Test from $GITHUB_SERVER_URL/$GITHUB_REPOSITORY\" }" ${{ secrets.WEBHOOK_URL }}
