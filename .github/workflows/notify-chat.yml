@@ -8,7 +8,7 @@ jobs:
   send_msg:
    runs-on: ubuntu-latest
    steps:
-    - name: curl
-      uses: wei/curl@v1
-      with:
-        args: -X POST -H 'Content-Type:\ application/json' --data '{ "displayName":"Github","format":"html","text":"Test from $GITHUB_SERVER_URL/$GITHUB_REPOSITORY" }' ${{ secrets.WEBHOOK_URL }}
+    - name: Chat notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.WEBHOOK_URL }}
