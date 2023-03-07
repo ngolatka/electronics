@@ -8,12 +8,7 @@ jobs:
   send_msg:
    runs-on: ubuntu-latest
    steps:
-    - name: Send message
-      id: Github
-      uses: fadenb/matrix-chat-message@v0.0.6
+    - name: curl
+      uses: wei/curl@v1
       with:
-        homeserver: 'riot.netresearch.de'
-        token: ${{ secrets.ELEMENT_ACCESS_TOKEN }}
-        channel: ${{ secrets.ELEMENT_ROOM_ID }}
-        message: |
-          Test message from $GITHUB_SERVER_URL/$GITHUB_REPOSITORY
+        args: -X POST -H "Content-Type:\ application/json" --data '{ "displayName":"Github","format":"html","text":"Test from $GITHUB_SERVER_URL/$GITHUB_REPOSITORY" }' ${{ secrets.WEBHOOK_URL }}
