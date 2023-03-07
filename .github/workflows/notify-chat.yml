@@ -1,23 +1,21 @@
-name: Send message to chat
+name: Notify chat about (re)opened issue
 on:
   issues:
     types:
       - opened
-
-env:
-  github_actor: test1
+      - reopened
 
 jobs:
   send_msg:
    runs-on: ubuntu-latest
    steps:
-    - name: "Call API"
+    - name: "Webhook call"
       uses: indiesdev/curl@v1.1
       with:
         url: ${{ secrets.WEBHOOK_URL }}
         method: "POST"
         accept: 200,201
         headers: '{ "Content-Type": "application/json" }'
-        body: '{ "displayName": "Github",  "format": "html", "text": "New issue by ${{ env.github_actor }} ${{ github.ref }}" }'
+        body: '{ "displayName": "Github",  "format": "html", "text": "Issue opened by ${{ github.actor }}<br>See ${{ github.server_url }}/${{ github.repository }}/issues?q=involves%3A${{ github.actor }}+is%3Aopen" }'
         timeout: 1000
         retries: 2
