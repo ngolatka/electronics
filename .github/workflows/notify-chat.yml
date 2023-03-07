@@ -5,7 +5,7 @@ on:
       - opened
 
 env:
-  github_actor: $GITHUB_ACTOR
+  github_actor: ${{ GITHUB_ACTOR }}
 
 jobs:
   send_msg:
