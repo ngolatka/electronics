@@ -5,7 +5,7 @@ on:
       - opened
 
 env:
-  json_body: '{ "displayName": "Github",  "format": "html", "text": "New issue by $GITHUB_ACTOR<br>$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" }'
+  json_body: '{ "displayName": "Github",  "format": "html", "text": "New issue by ${{ GITHUB_ACTOR }}<br>${{ GITHUB_SERVER_URL }}/${{ GITHUB_REPOSITORY }}" }'
 
 jobs:
   send_msg:
