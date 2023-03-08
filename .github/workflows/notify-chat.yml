@@ -8,7 +8,7 @@ env:
 jobs:
   send_msg_issue_open:
    runs-on: ubuntu-latest
-   if: github.event.issue.action == 'opened' || github.event.issue.action == 'reopened'
+   if: issues.action == 'opened' || issues.action == 'reopened'
    steps:
     - name: "Exec webhook call"
       uses: indiesdev/curl@v1.1
@@ -17,7 +17,7 @@ jobs:
         method: "POST"
         accept: 200
         headers: '{ "Content-Type": "application/json" }'
-        body: '{ "displayName": "GitHub", "format": "html", "text": "${{ env.issue_link }} ${{ github.event.issue.action }} by ${{ github.actor }} in ${{ github.repository }}" }'
+        body: '{ "displayName": "GitHub", "format": "html", "text": "${{ env.issue_link }} ${{ issues.action }} by ${{ github.actor }} in ${{ github.repository }}" }'
         timeout: 1000
         retries: 2
   send_msg_new_comment:
