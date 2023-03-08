@@ -8,7 +8,7 @@ env:
 jobs:
   send_msg_issue_open:
    runs-on: ubuntu-latest
-   if: github.event.issue.action == "opened"  || github.event.issue.action == "reopened" 
+   if: github.event.issue.action == 'opened' || github.event.issue.action == 'reopened'
    steps:
     - name: "Exec webhook call"
       uses: indiesdev/curl@v1.1
@@ -22,7 +22,7 @@ jobs:
         retries: 2
   send_msg_new_comment:
    runs-on: ubuntu-latest
-   if: github.event.issue_comment.action == "created"
+   if: github.event.issue_comment.action == 'created'
    steps:
     - name: "Exec webhook call"
       uses: indiesdev/curl@v1.1
