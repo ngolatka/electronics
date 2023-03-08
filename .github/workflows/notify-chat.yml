@@ -1,40 +1,40 @@
 name: Notify chat about (re)opened issue
 
-common_curl_config: &common_curl_config
-  url: ${{ secrets.WEBHOOK_URL }}
-  method: "POST"
-  accept: 200
-  headers: '{ "Content-Type": "application/json" }'
-  timeout: 1000
-  retries: 2
-
 on:
   [ issues, issue_comment ]
 
 env:
   issue_link: <a href='${{ github.server_url }}/${{ github.repository }}/issues/${{ github.event.issue.number }}'>Issue ${{ github.event.issue.number }}</a> '${{ github.event.issue.title }}'
 
-
-
 jobs:
 
   send_msg_issue_open:
    runs-on: ubuntu-latest
-   if: github.event.action == 'opened' || github.event.action == 'reopened'
+   if: github.event.issue && (github.event.action == 'opened' || github.event.action == 'reopened')
    steps:
     - name: "Exec webhook call"
       uses: indiesdev/curl@v1.1
       with:
-        <<: *common_curl_config        
+        url: ${{ secrets.WEBHOOK_URL }}
+        method: "POST"
+        accept: 200
+        timeout: 1000
+        retries: 2
+        headers: '{ "Content-Type": "application/json" }'
         body: '{ "displayName": "GitHub", "format": "html", "text": "${{ env.issue_link }} ${{ github.event.action }} by ${{ github.actor }} in ${{ github.repository }}" }'
       
 
   send_msg_new_comment:
    runs-on: ubuntu-latest
-   if: github.event.action == 'created'
+   if: github.event.issue_comment && github.event.action == 'created'
    steps:
     - name: "Exec webhook call"
       uses: indiesdev/curl@v1.1
       with:
-        <<: *common_curl_config    
+        url: ${{ secrets.WEBHOOK_URL }}
+        method: "POST"
+        accept: 200
+        timeout: 1000
+        retries: 2
+        headers: '{ "Content-Type": "application/json" }'
         body: '{ "displayName": "GitHub", "format": "html", "text": "${{ env.issue_link }} in repo ${{ github.repository }} has new comment from ${{ github.actor }}" }'
