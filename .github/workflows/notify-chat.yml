@@ -4,13 +4,17 @@ on:
     types:
       - opened
       - reopened
+  issue_comment:
+    types:
+      - created
 
 env:
-  message: <a href='${{ github.server_url }}/${{ github.repository }}/issues/${{ github.event.issue.number }}'>Issue ${{ github.event.issue.number }}</a> '${{ github.event.issue.title }}' ${{ github.event.issue.state }} in repo ${{ github.repository }} by ${{ github.actor }}
+  issue_link: <a href='${{ github.server_url }}/${{ github.repository }}/issues/${{ github.event.issue.number }}'>Issue ${{ github.event.issue.number }}</a> '${{ github.event.issue.title }}'
 
 jobs:
-  send_msg:
+  send_msg_issue_open:
    runs-on: ubuntu-latest
+   if: ${{ !github.event.issue_comment }}
    steps:
     - name: "Exec webhook call"
       uses: indiesdev/curl@v1.1
@@ -19,6 +23,20 @@ jobs:
         method: "POST"
         accept: 200
         headers: '{ "Content-Type": "application/json" }'
-        body: '{ "displayName": "GitHub", "format": "html", "text": "${{ env.message }}" }'
+        body: '{ "displayName": "GitHub", "format": "html", "text": "${{ env.issue_link }} opened in repo ${{ github.repository }} by ${{ github.actor }}" }'
+        timeout: 1000
+        retries: 2
+  send_msg_new_comment:
+   runs-on: ubuntu-latest
+   if: ${{ github.event.issue_comment }}
+   steps:
+    - name: "Exec webhook call"
+      uses: indiesdev/curl@v1.1
+      with:
+        url: ${{ secrets.WEBHOOK_URL }}
+        method: "POST"
+        accept: 200
+        headers: '{ "Content-Type": "application/json" }'
+        body: '{ "displayName": "GitHub", "format": "html", "text": "${{ env.issue_link }} in repo ${{ github.repository }} has new comment from ${{ github.actor }}" }'
         timeout: 1000
         retries: 2
