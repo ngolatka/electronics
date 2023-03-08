@@ -5,6 +5,9 @@ on:
       - opened
       - reopened
 
+env:
+  message: '<a href=\"${{ github.server_url }}/${{ github.repository }}/issues/${{ github.event.issue.number }}\">Issue \#${{ github.event.issue.number }}</a> ${{ github.event.issue.action }} in ${{ github.repository }} by ${{ github.actor }}'
+
 jobs:
   send_msg:
    runs-on: ubuntu-latest
@@ -14,8 +17,8 @@ jobs:
       with:
         url: ${{ secrets.WEBHOOK_URL }}
         method: "POST"
-        accept: 200,201
+        accept: 200
         headers: '{ "Content-Type": "application/json" }'
-        body: '{ "displayName": "Github", "format": "html", "text": "Issue opened in ${{ github.repository }} by ${{ github.actor }}.<br>${{ github.server_url }}/${{ github.repository }}/issues/${{ github.event.issue.number }}" }'
+        body: '{ "displayName": "GitHub", "format": "html", "text": "$message" }'
         timeout: 1000
         retries: 2
