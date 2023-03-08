@@ -1,4 +1,4 @@
-name: Notify chat about (re)opened issue
+name: Notify chat about issues and comments
 
 on:
   [ issues, issue_comment ]
@@ -10,7 +10,7 @@ jobs:
 
   send_msg_issue_open:
    runs-on: ubuntu-latest
-   if: github.event.issue && (github.event.action == 'opened' || github.event.action == 'reopened')
+   if: github.event.action == 'opened' || github.event.action == 'reopened'
    steps:
     - name: "Exec webhook call"
       uses: indiesdev/curl@v1.1
@@ -26,7 +26,7 @@ jobs:
 
   send_msg_new_comment:
    runs-on: ubuntu-latest
-   if: github.event.issue_comment && github.event.action == 'created'
+   if: github.event.action == 'created'
    steps:
     - name: "Exec webhook call"
       uses: indiesdev/curl@v1.1
