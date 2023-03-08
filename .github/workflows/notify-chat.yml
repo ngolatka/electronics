@@ -6,7 +6,7 @@ on:
       - reopened
 
 env:
-  message: ${{ github.actor }} has set issue <a href='${{ github.server_url }}/${{ github.repository }}/issues/${{ github.event.issue.number }}'>${{ github.event.issue.number }}</a> '${{ github.event.issue.title }}' in ${{ github.repository }} to ${{ github.event.issue.state }}
+  message: <a href='${{ github.server_url }}/${{ github.repository }}/issues/${{ github.event.issue.number }}'>Issue ${{ github.event.issue.number }}</a> '${{ github.event.issue.title }}' ${{ github.event.issue.state }} in repo ${{ github.repository }} by ${{ github.actor }}
 
 jobs:
   send_msg:
