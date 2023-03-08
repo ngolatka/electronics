@@ -19,6 +19,6 @@ jobs:
         method: "POST"
         accept: 200
         headers: '{ "Content-Type": "application/json" }'
-        body: '{ "displayName": "GitHub", "format": "html", "text": "$message" }'
+        body: '{ "displayName": "GitHub", "format": "html", "text": "${{ env.message }}" }'
         timeout: 1000
         retries: 2
