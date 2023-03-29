@@ -1,0 +1,22 @@
+name: Create PR
+
+on:
+  [ commit ]
+
+jobs:
+
+  send_msg_issue_open:
+   runs-on: ubuntu-latest
+   if: github.event.action == 'opened' || github.event.action == 'reopened'
+   steps:
+    - name: "Exec webhook call"
+      uses: indiesdev/curl@v1.1
+      with:
+        url: ${{ secrets.WEBHOOK_URL }}
+        method: "POST"
+        accept: 200
+        timeout: 1000
+        retries: 2
+        headers: '{ "Content-Type": "application/json" }'
+        body: '{ "displayName": "GitHub", "format": "html", "text": "${{ env.issue_link }} ${{ github.event.action }} by ${{ github.actor }} in ${{ github.repository }}" }'
+        
